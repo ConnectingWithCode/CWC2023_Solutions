@@ -24,6 +24,15 @@ scoreboard = play.new_text(
   color='purple')
 
 
+you_win_message = play.new_text(
+  "You Win!",
+  x=0,
+  y=180,
+  font_size=250,
+  color='yellow')
+you_win_message.hide()
+
+
 @play.repeat_forever
 def control_bin():
   if bin.game_over:
@@ -102,9 +111,12 @@ def control_motion():
       falling_items.remove(item)
       item.remove()
 
+  if bin.caughtCorrectly >= 100:
+    you_win_message.show()
+    bin.game_over = True
+
   if bin.caughtIncorrectly + bin.hitGround >= 10:
     bin.game_over = True
   scoreboard.words = f"CaughtCorrectly = {bin.caughtCorrectly}   CaughtIncorrectly = {bin.caughtIncorrectly}   HitGround = {bin.hitGround}"
-
 
 play.start_program()
