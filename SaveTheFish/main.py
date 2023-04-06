@@ -12,20 +12,17 @@ message = play.new_text("3", x=-300, y=275, color='yellow')
 
 jars = []
 
-
 @play.repeat_forever
 async def create_jars():
     jar = play.new_image("jar.png", x=400, y=random.randint(-275, 275))
     jars.append(jar)
     await play.timer(seconds=0.8)
 
-
 fishies = []
 for k in range(3):
     fish = play.new_image("fish.png", x=-350, y=-275 + k * 275, size=33)
     fish.direction = 10
     fishies.append(fish)
-
 
 @play.repeat_forever
 def forever_loop():
