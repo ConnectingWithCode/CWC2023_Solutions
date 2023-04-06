@@ -28,9 +28,9 @@ scoreboard = play.new_text(
 def control_bin():
   if bin.game_over:
     return
-  if play.key_is_pressed("left"):
+  if play.key_is_pressed("left", "a"):
     bin.x = bin.x - 15
-  elif play.key_is_pressed("right"):
+  elif play.key_is_pressed("right", "d"):
     bin.x = bin.x + 15
   if play.key_is_pressed("t"):
     bin.isTrash = True
