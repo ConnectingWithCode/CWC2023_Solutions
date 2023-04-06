@@ -26,9 +26,9 @@ def control_motion():
     timer_text.words = f"Timer = {(time.time() - start_time):.2f}"
     if time.time() - start_time > MAX_TIME:
         butterfly.game_over = True
-    if play.key_is_pressed("left"):
+    if play.key_is_pressed("left", "a"):
         butterfly.x = -200
-    elif play.key_is_pressed("right"):
+    elif play.key_is_pressed("right", "d"):
         butterfly.x = 200
     for bubble in bubbles:
         bubble.y = bubble.y - 4
