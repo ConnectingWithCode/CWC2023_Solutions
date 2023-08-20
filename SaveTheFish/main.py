@@ -21,7 +21,8 @@ async def create_jars():
 fishies = []
 for k in range(3):
     fish = play.new_image("fish.png", x=-350, y=-275 + k * 275, size=33)
-    fish.direction = 10
+    fish.speed_x = 1
+    fish.speed_y = 2
     fishies.append(fish)
 
 @play.repeat_forever
@@ -39,10 +40,12 @@ def forever_loop():
             jar.remove()
 
     for fish in fishies:
-        fish.x = fish.x + 1
-        fish.y = fish.y + fish.direction
+        fish.x = fish.x + fish.speed_x
+        fish.y = fish.y + fish.speed_y
         if abs(fish.y) > 280:
-            fish.direction *= -1
+            fish.speed_y *= -1
+        if abs(fish.x) > 380:
+            fish.speed_x *= -1
 
         for jar in jars:
             if fish.is_touching(jar):
